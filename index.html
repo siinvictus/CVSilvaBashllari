@@ -1,169 +1,653 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Silva Bashllari CV</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silva Bashllari — Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --deep: #0d1f3c;
+    --blue: #1a3a6b;
+    --mid: #2756a8;
+    --accent: #3b82f6;
+    --sky: #60a5fa;
+    --ice: #bfdbfe;
+    --white: #f0f6ff;
+    --muted: #94afd4;
+    --border: rgba(59,130,246,0.18);
+  }
 
-    h1, h2 {
-      color: #00ffff;
-      margin-bottom: 10px;
-    }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    h3 {
-      color: #ffcc00;
-      margin-bottom: 5px;
-    }
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 13.5px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
 
-    p, li {
-      color: #ccc;
-    }
+  /* subtle grid overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-    a {
-      color: #00ff00;
-      text-decoration: none;
-    }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    position: relative;
+    z-index: 1;
+  }
 
-    a:hover {
-      text-decoration: underline;
-    }
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
 
-    .section {
-      margin-bottom: 30px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 20px;
-    }
+  .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 46px;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: var(--white);
+  }
 
-    ul {
-      list-style-type: disc;
-      margin-left: 20px;
-    }
+  .name span {
+    color: var(--sky);
+  }
 
-    .contact {
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
+  .title {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-top: 8px;
+  }
 
-    .subsection {
-      margin-top: 15px;
-    }
-  </style>
+  .contact {
+    text-align: right;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .contact a {
+    color: var(--sky);
+    text-decoration: none;
+    transition: color .2s;
+  }
+
+  .contact a:hover { color: var(--white); }
+
+  /* ── SECTIONS ── */
+  section {
+    margin-bottom: 28px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── SKILLS TABLE ── */
+  .skills-grid {
+    display: grid;
+    gap: 2px;
+  }
+
+  .skill-group-header {
+    background: var(--blue);
+    padding: 5px 12px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ice);
+    margin-top: 6px;
+  }
+
+  .skill-group-header span {
+    color: var(--sky);
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 10px;
+    margin-left: 8px;
+    text-transform: none;
+  }
+
+  .skill-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    border-bottom: 1px solid rgba(59,130,246,0.08);
+  }
+
+  .skill-cat {
+    background: rgba(13,31,60,0.6);
+    padding: 5px 12px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--sky);
+    border-right: 1px solid var(--border);
+  }
+
+  .skill-val {
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── ENTRIES ── */
+  .entry {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(59,130,246,0.07);
+  }
+
+  .entry:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .entry-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: var(--white);
+    font-style: italic;
+  }
+
+  .entry-date {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .entry-org {
+    font-size: 12px;
+    color: var(--sky);
+    margin-bottom: 6px;
+  }
+
+  .entry ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .entry ul li {
+    font-size: 12.5px;
+    color: var(--muted);
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 2px;
+  }
+
+  .entry ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* ── COMMUNITY (no bullets) ── */
+  .community-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(59,130,246,0.07);
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .community-entry:last-child { border-bottom: none; }
+
+  .comm-left { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+
+  .comm-title {
+    font-weight: 500;
+    color: var(--white);
+    font-size: 12.5px;
+  }
+
+  .comm-org {
+    font-size: 12px;
+    color: var(--sky);
+  }
+
+  .comm-date {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-group-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 10px 0 6px;
+    letter-spacing: 1px;
+  }
+
+  .pub-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .pub-list li {
+    font-size: 12.5px;
+    color: var(--muted);
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+
+  .pub-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .pub-list a {
+    color: var(--sky);
+    text-decoration: none;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .project-card {
+    background: rgba(13,31,60,0.5);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px;
+    transition: border-color .2s;
+  }
+
+  .project-card:hover { border-color: var(--accent); }
+
+  .project-title {
+    font-weight: 500;
+    font-size: 12.5px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .project-desc {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-entry {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(59,130,246,0.07);
+    align-items: start;
+  }
+
+  .edu-entry:last-child { border-bottom: none; }
+
+  .edu-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 14px;
+    color: var(--white);
+    font-style: italic;
+  }
+
+  .edu-sub {
+    font-size: 12px;
+    color: var(--sky);
+    margin-top: 2px;
+  }
+
+  .edu-note {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  .edu-date {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  /* ── LANGUAGES ── */
+  .lang-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .lang-item {
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  .lang-item strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; color: #111; }
+    body::before { display: none; }
+    .page { padding: 20px; }
+    .name, .edu-title, .entry-title { color: #0a1628; }
+    .section-label { color: #1a3a6b; }
+    .contact a, .comm-org, .entry-org, .skill-cat { color: #2756a8; }
+    .muted, .skill-val, .entry ul li, .pub-list li, .project-desc, .comm-date, .entry-date, .edu-date { color: #444; }
+    .skill-group-header { background: #1a3a6b; }
+    .skill-row { border-bottom-color: #ddd; }
+    .project-card { border-color: #ccc; background: #f9faff; }
+  }
+</style>
 </head>
 <body>
+<div class="page">
 
-  <h1>Silva Bashllari</h1>
-  <p class="contact">📞: +39 380 8625324 | 📧: <a href="mailto:sbashllari@gmail.com">sbashllari@gmail.com</a> | Git: <a href="https://github.com/siinvictus">Silva Bashllari GIT</a></p>
+  <!-- HEADER -->
+  <header>
+    <div>
+      <div class="name">Silva <span>Bashllari</span></div>
+      <div class="title">Data Scientist</div>
+    </div>
+    <div class="contact">
+      Firenze, Italy<br>
+      <a href="mailto:sbashllari@gmail.com">sbashllari@gmail.com</a><br>
+      <a href="https://linkedin.com/in/silvabashllari" target="_blank">linkedin.com/in/silvabashllari</a><br>
+      <a href="https://github.com/siinvictus" target="_blank">github.com/siinvictus</a>
+    </div>
+  </header>
 
-  <div class="section">
-    <h2>Summary</h2>
-    <p>Data scientist and junior researcher with a strong focus on bridging the social and technical fields. I bring hands-on experience in Python, SQL, Java, and statistical analysis, with a solid background in working with nationally representative datasets and translating quantitative findings into policy-relevant insights. During my graduate studies at Politecnico di Torino, I developed analytical projects involving clustering, text analysis, and applied statistical methods. I have co-authored two national-level research papers based on large-scale surveys in Albania, including analysis of social indicators and population perceptions. My work combines rigorous quantitative analysis with field-informed understanding gained through engagement with grassroots tech communities and civil society, fostering the use of data and AI.</p>
-  </div>
+  <!-- EDUCATION -->
+  <section>
+    <div class="section-label">Education</div>
 
-  <div class="section">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>Python & its data science libraries (Pandas, Numpy, Scikit-learn, Matplotlib, Seaborn, PyTorch, NetworkX, etc.)</li>
-      <li>SQL, MongoDB, Hadoop, Spark | Git and GitHub | Java | Excel | Tableau | R | Canva</li>
+    <div class="edu-entry">
+      <div>
+        <div class="edu-title">MSc in Data Science and Engineering — 106/110</div>
+        <div class="edu-sub">Polytechnic of Turin, Italy</div>
+        <div class="edu-note">Thesis: <a href="https://webthesis.biblio.polito.it/38751/" style="color:var(--sky);text-decoration:none;">Tales of Work in the Age of The Blind Watchmakers (AI): An Anthological & Mixed-Methods Study of the Clashes of Schools of Thought and Public Perceptions.</a></div>
+        <div class="edu-note" style="margin-top:3px;">Activities: BEST (Board of European Students of Technology) — Topic Manager, EBEC</div>
+      </div>
+      <div class="edu-date">09/2021 – 12/2025</div>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <div class="edu-title">Summer School — Responsible AI & Financial Literacy</div>
+        <div class="edu-sub">European Forum Alpbach, Austria</div>
+      </div>
+      <div class="edu-date">08–09/2023</div>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <div class="edu-title">Academy for Social Democracy</div>
+        <div class="edu-sub">Friedrich-Ebert-Stiftung (FES), Albania</div>
+      </div>
+      <div class="edu-date">10–11/2020</div>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <div class="edu-title">BA in Business Informatics — 10/10</div>
+        <div class="edu-sub">Mediterranean University of Albania</div>
+        <div class="edu-note">Activities: Student Senate Member</div>
+      </div>
+      <div class="edu-date">09/2018 – 07/2021</div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group-header">Technical <span>Proficient</span></div>
+      <div class="skill-row"><div class="skill-cat">Languages</div><div class="skill-val">Python, SQL</div></div>
+      <div class="skill-row"><div class="skill-cat">DS & ML</div><div class="skill-val">Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, PyTorch, NetworkX, NLTK, SciPy</div></div>
+      <div class="skill-row"><div class="skill-cat">Concepts</div><div class="skill-val">Machine Learning, Statistical Modelling, Regression, Classification, Clustering, NLP, Dimensionality Reduction, Feature Engineering</div></div>
+      <div class="skill-row"><div class="skill-cat">Tools</div><div class="skill-val">Jupyter Lab, VS Code, LaTeX, Canva, Microsoft Office</div></div>
+
+      <div class="skill-group-header">Technical <span>Familiar</span></div>
+      <div class="skill-row"><div class="skill-cat">Dev & Ops</div><div class="skill-val">Bash, Git & GitHub, Docker, Ubuntu / Linux</div></div>
+      <div class="skill-row"><div class="skill-cat">Databases</div><div class="skill-val">MongoDB, Hadoop, Spark</div></div>
+      <div class="skill-row"><div class="skill-cat">Other</div><div class="skill-val">Tableau, R, HuggingFace SmolAgents, Java</div></div>
+
+      <div class="skill-group-header">Non-Technical</div>
+      <div class="skill-row"><div class="skill-cat">Communication</div><div class="skill-val">Science Communication, Public Speaking, Technical Writing, Media Interviews</div></div>
+      <div class="skill-row"><div class="skill-cat">Research</div><div class="skill-val">Mixed-Methods Research, Survey Design, Policy Report Writing, Academic Writing</div></div>
+      <div class="skill-row"><div class="skill-cat">Leadership</div><div class="skill-val">Community Leadership, Conference Organisation, Workshop Facilitation, Programme Curation & Panel Moderation, Working Group Lead</div></div>
+      <div class="skill-row"><div class="skill-cat">Languages</div><div class="skill-val">Albanian (Native), English (C2 – TOEFL iBT), Italian (B2 – CELI 3), French (A2)</div></div>
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL EXPERIENCE -->
+  <section>
+    <div class="section-label">Professional Experience</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">Invited Expert & Workshop Facilitator — AI & Critical Thinking</div>
+        <div class="entry-date">04/2026</div>
+      </div>
+      <div class="entry-org">Council of Europe – North-South Centre | Madrid, Spain</div>
+      <ul>
+        <li>Designed and delivered a workshop on AI and critical thinking at the Global Education Annual Meeting.</li>
+        <li>Explained key AI concepts and model architectures to non-technical international educators.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">Research Fellow — Digital Rights & AI Governance</div>
+        <div class="entry-date">04/2026 – 06/2026</div>
+      </div>
+      <div class="entry-org">SHARE Foundation | Remote / Skopje, North Macedonia</div>
+      <ul>
+        <li>Fellowship on digital rights, security, and AI with focus on data collection and extraction practices.</li>
+        <li>Analysed perceptions around digital rights, modelled relationships between key actors, and used data visualisation to communicate patterns.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">External Research Associate & Data Scientist</div>
+        <div class="entry-date">08/2025 – 11/2025</div>
+      </div>
+      <div class="entry-org">Center for Comparative and International Studies (CCIS), Albania | Project-Based, supported by the Swiss Embassy in Albania</div>
+      <ul>
+        <li>Conducted research and data analysis on surveys about data trust and usage among non-state actors using Python and visualisation tools.</li>
+        <li>Co-authored a formal policy report, typeset in LaTeX, with Prof. Dr. Nevila Xhindi.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">External Research Associate & Data Scientist</div>
+        <div class="entry-date">05/2025 – 08/2025</div>
+      </div>
+      <div class="entry-org">Network Albania | Project-Based</div>
+      <ul>
+        <li>Performed data analysis and advised on AI-related matters on a project basis.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">Assistant Tutor — Programming Courses</div>
+        <div class="entry-date">10/2020 – 06/2021</div>
+      </div>
+      <div class="entry-org">Tirana Center of Technology, Albania</div>
+      <ul>
+        <li>Delivered hands-on programming instruction in Java and Python to beginner-level learners.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS, TALKS & AWARDS -->
+  <section>
+    <div class="section-label">Publications, Public Talks & Awards</div>
+
+    <div class="pub-group-title">European Research Memberships</div>
+    <ul class="pub-list">
+      <li>European COST Action – The HUMAN-IT Initiative (CA24164), since December 2025. Coordinator of sub-group 2 of WG3 (AI & labour markets survey design); member of the science communication working group.</li>
     </ul>
-  </div>
 
-  <div class="section">
-    <h2>Professional Experience</h2>
-
-    <h3>Data Analyst Trainee - Local Public Health Unit, Vlore, Albania (11/2025–01/2026)</h3>
-    <p>Traineeship. Conducted data analysis to understand long-term patterns of epidemiological diseases, their frequency of occurrence, associated symptoms, and their relationships with demographic data, using Python and various data visualization tools.</p>
-
-    <h3>External Research Associate & Data Scientist - CCIS, Tirana, Albania (08/2025–11/2025)</h3>
-    <p>Project-based. Collaborated on a project to conduct research and data analysis based on surveys on the usage and trust in data from various nonstate actors, such as businesses, universities etc. in Albania using Python and various visualization tools.</p>
-
-    <h3>External Research Associate & Data Scientist - Network Albania (05/2025–08/2025)</h3>
-    <p>Project-Based. Collaborated on a project basis as an external research associate and data scientist, by conducting when needed data analysis and serving as an advisor for matters related to AI.</p>
-
-    <h3>Co-Organizer & Program Curator - LDA Europe, Tirana, Albania (03/2025–05/2025)</h3>
-    <p>Project-based. Organized two international interdisciplinary conferences LeapIn with a focus on how AI and global political changes are shifting multiple disciplines and DreamIn 2025 with a focus on salesforce. For LeapIN, I was also the program curator, given the focus on AI.</p>
-
-    <h3>Grassroots Community Co-Manager - DAIT, Tirana, Albania (06/2024–05/2025)</h3>
-    <p>Part-time. Organized and taught in workshops and events to simplify AI concepts for general audiences. Fostered collaborations with industry experts and academia.</p>
-
-    <h3>Assistant Tutor - Programming Courses, Tirana Center of Technology, Albania (10/2020–06/2021)</h3>
-    <p>Part-time. Delivered hands-on programming instruction in Java and Python to beginner-level learners.</p>
-  </div>
-
-  <div class="section">
-    <h2>Education</h2>
-    <ul>
-      <li>MSc in Data Science and Engineering (Grade: 106/110) - Polytechnic of Turin, Italy (09/2021–12/2025)</li>
-      <li>Summer School on Responsible AI and Financial Literacy - European Forum Alpbach, Austria (08-09/2023)</li>
-      <li>Academy For Social Democracy - Friedrich-Ebert-Stiftung (FES), Albania (10-11/2020)</li>
-      <li>BA in Business Informatics (Grade: 10/10) - Mediterranean University of Albania, Albania (09/2018–07/2021)</li>
+    <div class="pub-group-title">Publications & Reports</div>
+    <ul class="pub-list">
+      <li><a href="https://www.researchgate.net/publication/398529374" target="_blank">Policy Report: Fostering Trust and Utilization in Albania's Data Landscape</a> – CCIS & Swiss Embassy Albania, 2025. Co-author with Prof. Dr. Nevila Xhindi.</li>
+      <li><a href="https://www.researchgate.net/publication/400250332" target="_blank">Report: Understanding Youth Engagement in Technology and Creative Events</a> – C4 Communities Program, 2025. Co-author with Edis Hasaj.</li>
+      <li>The Age of the Blind Watchmakers – Forum Ferdinando Rossi, Torino, Italy, 2022.</li>
+      <li>The Pandemic, Digitalization, or Digital Transformation? – Maltepe University Student Congress, Online, 2021.</li>
+      <li><a href="https://www.researchgate.net/publication/373985699" target="_blank">Comparing Effectiveness of Online and Traditional Learning in CS</a> – CIT Review Journal, Albania, 2020. Co-author.</li>
     </ul>
-  </div>
 
-  <div class="section">
-    <h2>GitHub Projects</h2>
-    <ul>
-      <li>Clustering Consumer Spending - Applied unsupervised learning techniques, like K-means, to cluster customers by spending behavior, using Principal Component Analysis (PCA) for dimensionality reduction.</li>
-      <li>Federated Learning - Implemented advanced strategies including client selection, domain generalization, and model pruning, with a focus on reducing costs and improving generalization across heterogeneous data.</li>
-      <li>Regression Task on Particle Tracking - Developed a multi-output regression model to predict particle coordinates (x, y) from RSD sensor signals, leveraging ensemble models and signal processing techniques to improve spatial accuracy.</li>
-      <li>Sentiment Classification of Tweets - Built a binary sentiment classifier using natural language processing techniques with tools such as NLTK and scikit-learn achieving a good F1 metric through Multinomial Naïve Bayes.</li>
+    <div class="pub-group-title">Selected Public Talks & Workshops</div>
+    <ul class="pub-list">
+      <li>PyCon Italia, Bologna, IT — Speaker: Graph Theory 101 & NetworkX (May 2026)</li>
+      <li>PyLadies Prishtina & RIT Kosovo, Prishtina, KS — Workshop Lead: The Mathematics Behind Machine Learning (May 2026)</li>
+      <li>PyLadies Prishtina & University of Prishtina, Prishtina, KS — Workshop Lead: Introduction to AI and Machine Learning (April 2026)</li>
+      <li>LeapIN Kosova 2026, Prizren, KS — Panelist: AI & The Economy Panel (April 2026)</li>
+      <li>42 Tirana, Girls in ICT Day '26 — Workshop Lead: Calculus Wars and the beauty behind mathematics (April 2026)</li>
+      <li><a href="https://www.youtube.com/watch?v=K-YLTEA28fw" target="_blank">TV Interview, CNN A2, Tirana, AL — What is AI?</a> (April 2026)</li>
+      <li>Entrepreneurship Week Albania — Speaker: AI & Future Skills: The Ethics of the Digital Workforce (November 2025)</li>
+      <li>National Skills Competition 10th Edition, Tirana, AL — Speaker: The Future of Work (November 2025)</li>
+      <li><a href="https://sfk.flossk.org/2025/speaker/silva-bashllari/" target="_blank">Software Freedom Kosovo (SFK25)</a> — Speaker & Workshop Lead: AI Impact on Work (October 2025)</li>
+      <li>Anna Lindh Foundation Forum 25, Tirana, AL — Panelist: Tech for Good Panel (June 2025)</li>
+      <li><a href="https://tiranafilmfest.org/guests/" target="_blank">Tirana International Film Festival (TIFF24)</a> — Panel Director & Moderator: AI in Movie-making (September 2024)</li>
+      <li>The Power Conference 2022, Tirana, AL — Speaker: Intro to Federated Learning (December 2022)</li>
     </ul>
-  </div>
 
-  <div class="section">
-    <h2>Languages</h2>
-    <p>Albanian (native) | English (C2 – TOEFL iBT) | Italian (B2 – CELI3) | French (A2)</p>
-  </div>
+    <div class="pub-group-title">Awards & Competitions</div>
+    <ul class="pub-list">
+      <li>AI Act Compass Innovation Challenge, Pisa Internet Festival & Scuola Superiore Sant'Anna (LeADS) — Team Leader, one of 7 selected teams internationally. Pisa, Italy, 2024.</li>
+      <li>2nd Prize — Research Competition, Albanian American Development Fund (AADF), CleanScore Project. Tirana, Albania, 2021.</li>
+    </ul>
+  </section>
 
-  <div class="section">
-    <h2>Publications, Conferences, European Research Memberships & Awards</h2>
-    
-    <div class="subsection">
-      <h3>European Research Memberships</h3>
-      <ul>
-        <li>European COST Action – The HUMAN-IT Initiative (CA24164) – since December 2025. Active member, contributing to science communication and policy-oriented research on human–AI interaction and work transformation.</li>
-      </ul>
+  <!-- GITHUB PROJECTS -->
+  <section>
+    <div class="section-label">Selected GitHub Projects</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">Regression Task on Particle Tracking</div>
+        <div class="project-desc">Multi-output regression predicting particle coordinates (x, y) from RSD sensor signals using ensemble models and signal processing.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Clustering Consumer Spending</div>
+        <div class="project-desc">K-means clustering on spending behaviour with PCA for dimensionality reduction.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Federated Learning</div>
+        <div class="project-desc">Client selection, domain generalisation, and model pruning strategies for heterogeneous data.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Sentiment Classification of Tweets</div>
+        <div class="project-desc">Binary sentiment classifier using NLTK and Scikit-learn; Multinomial Naïve Bayes with strong F1 score.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH COMMUNITY -->
+  <section>
+    <div class="section-label">Tech Community Engagement</div>
+
+    <div class="community-entry">
+      <div class="comm-left">
+        <span class="comm-title">Co-Organiser & Programme Curator — LeapIN 2025 & 2026</span>
+        <span class="comm-org">LDA Europe (NGO) | Albania</span>
+      </div>
+      <div class="comm-date">03/2025 – 06/2026</div>
     </div>
 
-    <div class="subsection">
-      <h3>Publications & Research Reports</h3>
-      <ul>
-        <li>"Policy Report: Fostering Trust and Utilization in Albania's Data Landscape" – CCIS, supported by the Swiss Embassy in Albania. Co-author with Prof. Dr. Nevila Xhindi.</li>
-        <li>"Report: Understanding Youth Engagement in Technology and Creative Events" – C4 Communities Program, Tirana, Albania, 2025. Co-author with Edis Hasaj.</li>
-        <li>"The Age of the Blind Watchmakers" – Forum Ferdinando Rossi, Torino, Italy, 2022. Author.</li>
-        <li>"The Pandemic, Digitalization, or Digital Transformation?" – Maltepe University Student Congress, Online, 2021. Author.</li>
-        <li>"Comparing Effectiveness of Online and Traditional Learning in CS" – CIT Review Journal, Tirana, Albania, 2020. Co-author with Evis Plaku, Alba Skendaj, Klea Korbi.</li>
-      </ul>
+    <div class="community-entry">
+      <div class="comm-left">
+        <span class="comm-title">Founder & Chapter Lead — PyLadies Prishtina</span>
+        <span class="comm-org">Python Software Foundation | Remote</span>
+      </div>
+      <div class="comm-date">02/2026 – present</div>
     </div>
 
-    <div class="subsection">
-      <h3>Speaking Engagements & Workshops</h3>
-      <ul>
-        <li>Entrepreneurship Week Albania, Tirana, Albania, November 2025 – Speaker: "AI & Future Skills: The Ethics of the Digital Workforce"</li>
-        <li>R-Ladies Tirana & Metropolitan University Talks, Tirana, Albania, November 2025 – Workshop Leader: "Basics of Graph Theory and NetworkX"</li>
-        <li>Software Freedom Kosovo Conference (SFK25), Prishtina, Kosovo, October 2025 – Speaker and Workshop Leader: "The Impact of AI on Work" & "Foundations of Data Science for Non-Technical Audiences"</li>
-        <li>Anna Lindh Foundation Forum 25, Tirana, Albania, June 2025 – Panelist on Tech for Good Panel</li>
-        <li>Tirana International Film Festival (TIFF24), Tirana, Albania, September 2024 – Panel Director and Moderator on AI in Movie-making Panel</li>
-        <li>EBEC Turin 2022 – Board of European Students of Technology (BEST), Torino, Italy, November 2022 – Topic Manager</li>
-      </ul>
+    <div class="community-entry">
+      <div class="comm-left">
+        <span class="comm-title">Community Contributor — FLOSSK</span>
+        <span class="comm-org">Free Libre Open Source Software Kosova | Remote</span>
+      </div>
+      <div class="comm-date">10/2025 – present</div>
     </div>
 
-    <div class="subsection">
-      <h3>Awards & Competitions</h3>
-      <ul>
-        <li>Innovation Challenge: AI Act Compass – Navigating Requirements for High-Risk AI Systems, Pisa Internet Festival & Scuola Superiore Sant'Anna (LeADS), Pisa, Italy, September-November 2024 – Team Leader</li>
-        <li>2nd Prize in Research Competition – American Development Fund, CleanScore Project, Tirana, Albania, 2021 – Author</li>
-      </ul>
+    <div class="community-entry">
+      <div class="comm-left">
+        <span class="comm-title">Co-Manager — Data and AI Tirana (DAIT)</span>
+        <span class="comm-org">Tirana, Albania</span>
+      </div>
+      <div class="comm-date">06/2024 – 05/2025</div>
     </div>
-  </div>
 
+    <div class="community-entry">
+      <div class="comm-left">
+        <span class="comm-title">Wikimedia Contributor</span>
+        <span class="comm-org">Wikimedians of Albanian Language User Group | Albania</span>
+      </div>
+      <div class="comm-date">02/2020 – 05/2022</div>
+    </div>
+  </section>
+
+</div>
 </body>
 </html>
